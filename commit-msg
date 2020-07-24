@@ -1,0 +1,12 @@
+#!/bin/bash
+endpath=$(basename $(pwd))
+currenttime=$(date +%H:%M)
+day=$(date +%d)
+month=$(date +%m)
+year=$(date +%Y)
+current_file=${HOME}/GitTimeTracker/${year}/${month}/${day}.txt
+mkdir -p ${HOME}/GitTimeTracker/${year}/${month}
+touch $current_file
+commit_message=$(<$1)
+add="${currenttime} - ${endpath} - ${commit_message}"
+echo $add >> $current_file
